@@ -1,7 +1,8 @@
 <!doctype html>
-{% load staticfiles %}
 <html lang="en">
-<head>
+
+	<head>
+	<title>Greetings Cards Spammers</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -11,9 +12,8 @@
 		  font-family: arial, sans-serif;
 		  border-collapse: collapse;
 		  text-align: left;
+		  }
 	</style>
-
-	<title>Greetings Cards Spammers</title>
 
 	<script>
 	$(document).ready(function(){
@@ -97,37 +97,42 @@
 		});
 	});
 	</script>
-</head>
+	</head>
 
-<body>
+	<body>
 	<div class="text-center" style="margin-bottom:0">
 		<h2>Greetings Cards Spammers</h2>
-		<table width="1020" class="table table-bordered">
-			<thead class="thead-dark">
+
+		<div class="pagination">
 			{% if is_paginated %}
-			<tr><td>
+			<span class="step-links">
 				{% if page_obj.has_previous %}
-				<a href="?page={{ page_obj.previous_page_number }}" class="pager-prev{% if not page_obj.has_previous %} inactive{% endif %}">&laquo;</a>
+					<a href="?page={{ page_obj.previous_page_number }}"> &laquo; previous</a>
 				{% endif %}
-				</td>
-				<td></td>
-				<td></td>
-				<td>
+
+				<span class="current">
+            		Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        		</span>
+
 				{% if page_obj.has_next %}
-					<a href="?page={{ page_obj.next_page_number }}" class="pager-next{% if not page_obj.has_next %} inactive{% endif %}">&raquo;</a>
+            		<a href="?page={{ page_obj.next_page_number }}"> next &raquo; </a>
+        		{% endif %}
+			</span>
+		</div>
+
+
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Order Count</th>
+					<th>Order Sum</th>
+					<th>Select</th>
+				</tr>
 				{% endif %}
-				</td>
-			</tr>
-			{% endif %}
+			</thead>
 
-			<tr>
-				<th>Name</th>
-				<th>Order Count</th>
-				<th>Order Sum</th>
-				<th>Select</th>
-			</tr>
-
-
+			<tbody>
 				{% for company in company_list %}
 				<tr>
 					<td><b>{{ company.name }}</b></td>
@@ -144,8 +149,8 @@
 					</tr>
 					{% endfor %}
 				{% endfor %}
-			</thead>
+			</tbody>
 		</table>
 	</div>
-</body>
+	</body>
 </html>

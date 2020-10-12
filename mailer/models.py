@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
 
@@ -30,8 +30,8 @@ class Contact(models.Model):
 @python_2_unicode_compatible
 class Order(models.Model):
     order_number = models.CharField(max_length=150)
-    company = models.ForeignKey(Company, related_name="orders")
-    contact = models.ForeignKey(Contact, related_name="orders")
+    company = models.ForeignKey(Company, related_name="orders", on_delete=models.CASCADE)
+    contact = models.ForeignKey(Contact, related_name="orders", on_delete=models.CASCADE)
     total = models.DecimalField(max_digits=18, decimal_places=9)
     order_date = models.DateTimeField(null=True, blank=True)
 

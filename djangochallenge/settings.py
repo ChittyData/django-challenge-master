@@ -10,7 +10,12 @@ SECRET_KEY = '#3(%x30j#h6c4l$g2fiknup^x21vw#&&4a%_pbowzs5eh&e%q#'
 DEBUG = True
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
-INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
+INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
+
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.sql.SQLPanel',
+    'template_timings_panel.panels.TemplateTimings.TemplateTimings',
+]
 
 INSTALLED_APPS = (
     # Previously installed apps
@@ -20,7 +25,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'debug_toolbar',
+    'template_timings_panel',
 
     # Newly installed apps
     'mailer',
@@ -45,6 +52,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'djangochallenge.sqlite3'),
     }
 }
+
+CACHES = {
+    'default':{
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+
 STATIC_URL = '/static/'
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/New_York'
