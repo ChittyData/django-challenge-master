@@ -45,8 +45,10 @@ class Order(models.Model):
     contact = models.ForeignKey(Contact, related_name="orders")
     total = models.DecimalField(max_digits=18, decimal_places=9)
     order_date = models.DateTimeField(null=True, blank=True)
+
     # for internal use only
     added_date = models.DateTimeField(auto_now_add=True)
+
     # for internal use only
     modified_date = models.DateTimeField(auto_now=True)
 
