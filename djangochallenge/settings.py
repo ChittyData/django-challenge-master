@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -47,9 +47,9 @@ DATABASES = {
 }
 STATIC_URL = '/static/'
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
