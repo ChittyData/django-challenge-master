@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.db.models import Sum
 
 
 class Company(models.Model):
@@ -11,10 +12,11 @@ class Company(models.Model):
     bic = models.CharField(max_length=150, blank=True)
 
     def get_order_count(self):
-        return self.orders.count()
+        return Order.objects.filter(company=self).count()
 
     def get_order_sum(self):
-        return sum([a.total for a in Order.objects.filter(company=self)])
+        totals = Contact.objects.all().aggregate(total_count=Sum('orders__total'))
+        return totals
 
 
 class Contact(models.Model):

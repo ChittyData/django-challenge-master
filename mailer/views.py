@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView
 
-from mailer.models import Company
+from .models import Company
 
 
 class IndexView(ListView):

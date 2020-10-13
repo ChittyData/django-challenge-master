@@ -13,8 +13,13 @@ ALLOWED_HOSTS = []
 INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
 
 DEBUG_TOOLBAR_PANELS = [
-    'debug_toolbar.panels.sql.SQLPanel',
-    'template_timings_panel.panels.TemplateTimings.TemplateTimings',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.profiling.ProfilingPanel',
+        'template_timings_panel.panels.TemplateTimings.TemplateTimings',
 ]
 
 INSTALLED_APPS = (

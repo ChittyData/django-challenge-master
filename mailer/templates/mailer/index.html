@@ -137,7 +137,7 @@
 				<tr>
 					<td><b>{{ company.name }}</b></td>
 					<td><b>{{ company.get_order_count }}</b></td>
-					<td><b>{{ company.get_order_sum|floatformat:2 }}</b></td>
+					<td><b>{{ company.get_order_sum.total_count|floatformat:2 }}</b></td>
 					<td><input type="checkbox" name="select{{company.pk}}" id=""></td>
 				</tr>
 					{% for contact in company.contacts.all %}
